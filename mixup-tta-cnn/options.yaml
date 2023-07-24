@@ -1,0 +1,26 @@
+project:
+  assets: .
+  name: final
+  timestamp: # '%y-%m-%d %H-%M'
+  clear_log: True
+
+model:
+
+optimizer:
+  lr: 0.0001
+  resume_optimizers: True
+
+dataloader:
+  batch_size: 16
+  val_max_iter: 400
+  test_max_iter: 400
+  shuffle: True
+
+epoch:
+  # epoch to start training from
+  #   if not 0, model/{start}.pth will be loaded
+  start: 36
+  # number of epochs of generating
+  n: 200
+  # interval between saving outputs
+  save_interval: 1
