@@ -18,7 +18,8 @@ class RandomMixup:
     def onehot(self, y):
         t = torch.full((self.n_classes, ),
                        self.smoothing / (self.n_classes - 1))
-        return t.scatter_(0, torch.tensor(y), 1.0 - self.smoothing)
+        t[y] = 1.0 - self.smoothing
+        return t
 
     def __call__(self, images, labels):
         assert len(images) == len(labels) == 2

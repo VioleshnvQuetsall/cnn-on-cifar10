@@ -58,11 +58,11 @@ def cifar10_datasets(val_ratio=0.1, gcn_zca=False):
     if gcn_zca:
         train_dataset = {
             'images': gcn(train_dataset.data),
-            'labels': np.array(train_dataset.targets),
+            'labels': torch.tensor(train_dataset.targets),
         }
         test_dataset = {
             'images': gcn(test_dataset.data),
-            'labels': np.array(test_dataset.targets),
+            'labels': torch.tensor(test_dataset.targets),
         }
 
         mean, zca_decomp = get_zca_normalization_param(train_dataset['images'])
@@ -73,11 +73,11 @@ def cifar10_datasets(val_ratio=0.1, gcn_zca=False):
     else:
         train_dataset = {
             'images': train_dataset.data,
-            'labels': np.array(train_dataset.targets),
+            'labels': torch.tensor(train_dataset.targets),
         }
         test_dataset = {
             'images': test_dataset.data,
-            'labels': np.array(test_dataset.targets),
+            'labels': torch.tensor(test_dataset.targets),
         }
 
     val_count = int(len(train_dataset['labels']) * val_ratio)
